@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muskan Ahuja | About</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8fafc;
+      color: #333;
+      overflow-x: hidden;
+    }
+    section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md py-4 sticky top-0 z-50">
+    <div class="container mx-auto px-6 flex flex-col md:flex-row justify-center items-center space-y-3 md:space-y-0 md:space-x-8">
+      <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium text-lg">Home</a>
+      <a href="about.html" class="text-blue-600 font-bold text-lg">About</a>
+      <a href="reviews.html" class="text-gray-700 hover:text-blue-600 font-medium text-lg">Reviews</a>
+      <a href="enroll.html" class="text-gray-700 hover:text-blue-600 font-medium text-lg">Enroll</a>
+      <a href="contact.html" class="text-gray-700 hover:text-blue-600 font-medium text-lg">Contact</a>
+    </div>
+  </nav>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center text-gray-800 mb-12">Meet Muskan Ahuja</h2>
+      <div class="flex flex-col lg:flex-row items-center lg:items-start gap-10">
+        
+        <!-- Profile Image -->
+        <div class="flex-shrink-0 mx-auto lg:mx-0">
+          <img src="muskan.jpg" alt="Muskan Ahuja" class="w-80 h-80 object-cover rounded-3xl border-8 border-white shadow-xl" />
+        </div>
+
+        <!-- Description -->
+        <div class="text-lg text-gray-700 leading-relaxed space-y-6 max-w-3xl">
+          <p>Muskan Ahuja is a passionate, results-driven online educator with over <strong>6 years of experience</strong> empowering students globally. With a background in academic excellence and a gift for connecting with learners of all ages, she has helped hundreds of students build clarity, confidence, and academic success.</p>
+
+          <p>Her classes blend <strong>conceptual understanding</strong> with <strong>real-world applications</strong>, encouraging critical thinking and problem-solving. Muskan’s dynamic, interactive approach ensures that each student stays engaged and motivated throughout their learning journey.</p>
+
+          <p>Over the years, Muskan has specialized in guiding students for competitive exams, CBSE/ICSE/IGCSE board syllabi, and foundational skill-building. Her focus is not just on scores — but on nurturing a love for learning that lasts beyond the classroom.</p>
+
+          <ul class="list-disc list-inside space-y-2">
+            <li>Customized lesson plans for every student</li>
+            <li>Live interactive sessions with individual attention</li>
+            <li>Proven record of grade improvement and top ranks</li>
+            <li>Global reach with students from 10+ countries</li>
+          </ul>
+
+          <p class="text-xl font-semibold text-gray-800">Start your learning journey today with one of the most trusted online tutors!</p>
+
+          <a href="enroll.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-10 rounded-full shadow-md transition transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300">
+            Enroll Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/919876565975" target="_blank" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.157 5.3 5.314.143 12 .143c3.181 0 6.167 1.24 8.413 3.487a11.803 11.803 0 0 1 3.487 8.41c-.003 6.683-5.16 11.839-11.844 11.839a11.87 11.87 0 0 1-5.927-1.574L.057 24zM6.597 20.013c1.735.995 3.27 1.591 5.403 1.593 5.448 0 9.887-4.436 9.889-9.884.001-5.452-4.436-9.89-9.885-9.89-5.45 0-9.887 4.437-9.887 9.887a9.867 9.867 0 0 0 1.524 5.292l-.999 3.648 3.955-1.646zm11.387-5.587c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.15-.198.297-.768.966-.941 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.412.248-.694.248-1.289.173-1.412z"/>
+    </svg>
+  </a>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8 text-center rounded-t-3xl shadow-inner">
+    <div class="container mx-auto px-6">
+      <p>&copy; 2025 Muskan Ahuja | Online Tutor. All rights reserved.</p>
+      <div class="flex justify-center space-x-6 mt-4">
+        <a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
+        <a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.onload = () => {
+      lucide.createIcons();
+
+      const sections = document.querySelectorAll('section');
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      sections.forEach(section => observer.observe(section));
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muskan Ahuja | Reviews</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .star-rating {
+            font-size: 2rem;
+            direction: rtl;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .star-rating input {
+            display: none;
+        }
+        .star-rating label {
+            color: #d1d5db;
+            cursor: pointer;
+            transition: color 0.3s ease-in-out;
+        }
+        .star-rating input:checked ~ label,
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: #f59e0b;
+        }
+
+        .review-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid #e5e7eb;
+        }
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+        }
+        .review-card .stars {
+            color: #f59e0b;
+            font-size: 1.6rem;
+            margin-bottom: 0.6rem;
+        }
+        .review-card .review-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #4b5563;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+        .review-card .reviewer-name {
+            font-weight: 600;
+            color: #1f2937;
+            font-size: 0.95rem;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a1a1aa;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #71717a;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm py-4 sticky top-0 z-50 border-b border-gray-100">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-center items-center space-y-3 md:space-y-0 md:space-x-10">
+            <a href="index.html" class="text-gray-600 hover:text-indigo-700 font-medium text-lg transition">Home</a>
+            <a href="about.html" class="text-gray-600 hover:text-indigo-700 font-medium text-lg transition">About</a>
+            <a href="reviews.html" class="text-indigo-700 font-bold text-lg border-b-2 border-indigo-700 pb-1">Reviews</a>
+            <a href="enroll.html" class="text-gray-600 hover:text-indigo-700 font-medium text-lg transition">Enroll</a>
+            <a href="contact.html" class="text-gray-600 hover:text-indigo-700 font-medium text-lg transition">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-24 text-center bg-gradient-to-br from-blue-700 to-purple-800 text-white shadow-md">
+        <div class="container mx-auto px-6">
+            <h1 class="font-['Montserrat'] text-5xl md:text-6xl font-extrabold mb-4 tracking-tight">Student Success Stories</h1>
+            <p class="text-xl md:text-2xl opacity-90 leading-relaxed max-w-3xl mx-auto">Read authentic feedback from our dedicated students and see how Muskan Ahuja has impacted their learning journey.</p>
+        </div>
+    </section>
+
+    <!-- Reviews List -->
+    <section id="reviews" class="py-20 bg-gray-50 min-h-screen">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="font-['Montserrat'] text-4xl font-bold text-gray-800 mb-12">What Our Learners Are Saying</h2>
+            <div id="reviews-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+            <div id="no-reviews-message" class="hidden text-gray-600 text-xl mt-8">
+                <p>No reviews yet. Be the first to share your valuable experience!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Submit Review -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="font-['Montserrat'] text-4xl font-bold text-gray-800 mb-10">Share Your Experience</h2>
+            <div class="max-w-xl mx-auto bg-white p-10 rounded-2xl shadow-lg border border-gray-200">
+                <form id="review-form" class="space-y-6">
+                    <input type="text" id="reviewerName" placeholder="Your Name" required
+                        class="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-indigo-500 text-base transition outline-none" />
+                    <textarea id="reviewText" placeholder="Share your experience and thoughts here..." rows="5" required
+                        class="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-indigo-500 text-base transition resize-y outline-none"></textarea>
+                    <div class="text-left">
+                        <label class="block mb-2 font-medium text-gray-700 text-lg">Your Rating</label>
+                        <div class="star-rating">
+                            <input type="radio" id="star5" name="rating" value="5" required><label for="star5">★</label>
+                            <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+                            <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+                            <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+                            <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+                        </div>
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-md font-bold text-lg shadow-md transition transform hover:scale-105 active:scale-95">
+                        Submit Review
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-10 text-center mt-12">
+        <div class="container mx-auto px-6">
+            <p class="text-md">&copy; 2025 Muskan Ahuja. All rights reserved.</p>
+            <div class="mt-4 space-x-5">
+                <a href="#" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+                <span class="text-gray-600">|</span>
+                <a href="#" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/919876565975" target="_blank" aria-label="Chat on WhatsApp"
+        class="fixed bottom-8 right-8 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition transform hover:scale-110 active:scale-90 z-40">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.157 5.3 5.314.143 12 .143c3.181 0 6.167 1.24 8.413 3.487a11.803 11.803 0 0 1 3.487 8.41c-.003 6.683-5.16 11.839-11.844 11.839a11.87 11.87 0 0 1-5.927-1.574L.057 24zM6.597 20.013c1.735.995 3.27 1.591 5.403 1.593 5.448 0 9.887-4.436 9.889-9.884.001-5.452-4.436-9.89-9.885-9.89-5.45 0-9.887 4.437-9.887 9.887a9.867 9.867 0 0 0 1.524 5.292l-.999 3.648 3.955-1.646zm11.387-5.587c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.15-.198.297-.768.966-.941 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.412.248-.694.248-1.289.173-1.412z"/>
+        </svg>
+    </a>
+
+    <script>
+        // Fade-in animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('section').forEach(section => observer.observe(section));
+
+        // Load reviews from backend
+        function loadReviews() {
+            fetch("reviews.php")
+                .then(res => res.json())
+                .then(reviews => {
+                    const container = document.getElementById('reviews-list');
+                    const noReviewsMessage = document.getElementById('no-reviews-message');
+                    container.innerHTML = "";
+
+                    if (reviews.length === 0) {
+                        noReviewsMessage.classList.remove('hidden');
+                        return;
+                    } else {
+                        noReviewsMessage.classList.add('hidden');
+                    }
+
+                    reviews.reverse().forEach(r => {
+                        const div = document.createElement('div');
+                        div.className = 'review-card';
+                        div.innerHTML = `
+                            <div class="stars">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</div>
+                            <p class="review-text">"${r.text}"</p>
+                            <p class="reviewer-name">– ${r.name}</p>
+                        `;
+                        container.appendChild(div);
+                    });
+                });
+        }
+
+        // Handle form submit
+        document.getElementById('review-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('reviewerName').value.trim();
+            const text = document.getElementById('reviewText').value.trim();
+            const ratingInput = document.querySelector('input[name="rating"]:checked');
+            const rating = ratingInput ? parseInt(ratingInput.value) : null;
+
+            if (!name || !text || rating === null) {
+                alert('Please fill out all fields and select a star rating.');
+                return;
+            }
+
+            fetch("reviews.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `name=${encodeURIComponent(name)}&text=${encodeURIComponent(text)}&rating=${rating}`
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Thank you! Your review has been submitted successfully.");
+                    loadReviews();
+                    document.getElementById('review-form').reset();
+                } else {
+                    alert("Error: " + data.error);
+                }
+            });
+        });
+
+        // Initial load
+        loadReviews();
+    </script>
+</body>
+</html>
